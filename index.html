@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La 35 Becas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>La 35 Becas</header>
+  <div class="login">
+    <div class="form-box">
+      <h2 style="text-align:center">Inicie Sesión</h2>
+      <input type="text" id="nombre" placeholder="Nombre">
+      <input type="text" id="apellido" placeholder="Apellido">
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
+      <button onclick="login()">Submit</button>
+    </div>
+  </div>
+
+  <div class="dashboard">
+    <div class="welcome">
+      <img src="https://via.placeholder.com/60" alt="avatar">
+      <h2>Hola! <span id="username"></span></h2>
+    </div>
+
+    <div class="grid-container">
+      <div class="box">
+        <h3>SOCIOS</h3>
+        <input type="text" placeholder="Buscar socio">
+        <table><tr><th>Número</th><th>Nombre</th><th>DNI</th><th>Domicilio</th></tr><tr><td>X</td><td>X</td><td>X</td><td>X</td></tr></table>
+        <button>Nuevo Socio</button>
+      </div>
+      <div class="box">
+        <h3>LIBRO DE SOCIOS</h3>
+        <table><tr><th>Número</th><th>Nombre</th><th>DNI</th><th>Ingreso</th><th>Egreso</th></tr><tr><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr></table>
+      </div>
+      <div class="box">
+        <h3>PADRÓN DE SOCIOS</h3>
+        <button>Imprimir</button>
+        <table><tr><th>Nombre</th><th>DNI</th><th>Número</th></tr><tr><td>X</td><td>X</td><td>X</td></tr></table>
+      </div>
+      <div class="box">
+        <h3>CONTROL</h3>
+        <button>Resumen</button>
+        <button>Talonarios a retirar</button>
+        <button>Duplicados</button>
+        <button>Anotaciones</button>
+      </div>
+      <div class="box">
+        <h3>CONTROL DE TALONARIOS</h3>
+        <input type="text" placeholder="Buscar talonario">
+        <table><tr><th>#</th><th>Fecha</th><th>Socio</th><th>Desde</th></tr><tr><td>X</td><td>X</td><td>X</td><td>X</td></tr></table>
+      </div>
+      <div class="box">
+        <h3>PAGOS</h3>
+        <select><option>Filtro 1</option></select>
+        <select><option>Filtro 2</option></select>
+        <button>Aplicar</button>
+        <table><tr><th>Socio</th><th>Descripción</th><th>Fecha</th><th>Monto</th></tr><tr><td>X</td><td>X</td><td>X</td><td>X</td></tr></table>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="IniciarSesion.js"></script>
+</html>
