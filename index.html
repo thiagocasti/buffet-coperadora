@@ -8,16 +8,32 @@
 </head>
 <body>
   <header>La 35 Becas</header>
+  
   <div class="login">
-    <div class="form-box">
-      <h2 style="text-align:center">Inicie Sesión</h2>
-      <input type="text" id="nombre" placeholder="Nombre">
-      <input type="text" id="apellido" placeholder="Apellido">
-      <input type="email" id="email" placeholder="Email">
-      <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
-      <button onclick="login()">Submit</button>
-    </div>
+  <div class="form-box">
+    <h2 style="text-align:center">Inicie Sesión</h2>
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="text" id="apellido" placeholder="Apellido">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="contraseña" placeholder="Contraseña">
+    <button onclick="login()">Ingresar</button>
+    <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
   </div>
+</div>
+
+<div class="register" style="display:none">
+  <div class="form-box">
+    <h2 style="text-align:center">Registro</h2>
+    <input type="text" id="reg-nombre" placeholder="Nombre">
+    <input type="text" id="reg-apellido" placeholder="Apellido">
+    <input type="email" id="reg-email" placeholder="Email">
+    <input type="password" id="reg-contraseña" placeholder="Contraseña">
+    <input type="password" id="reg-contraseña2" placeholder="Repetir Contraseña">
+    <button onclick="registrar()">Registrarse</button>
+    <p>¿Ya tienes cuenta? <a href="#" onclick="mostrarLogin()">Inicia sesión</a></p>
+  </div>
+</div>
+
 
   <div class="dashboard">
     <div class="welcome">
