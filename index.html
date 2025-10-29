@@ -9,33 +9,32 @@
 <body>
   <header>La 35 Becas</header>
   
-  <div class="login">
-  <div class="form-box">
-    <h2 style="text-align:center">Inicie Sesión</h2>
-    <input type="text" id="nombre" placeholder="Nombre">
-    <input type="text" id="apellido" placeholder="Apellido">
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="contraseña" placeholder="Contraseña">
-    <button onclick="login()">Ingresar</button>
-    <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
+  <div class="container" id="login-container">
+    <div class="form-box">
+      <h2>Inicie Sesión</h2>
+      <div id="login-error" class="error"></div>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="contraseña" placeholder="Contraseña" required>
+      <button onclick="login()">Ingresar</button>
+      <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
+    </div>
   </div>
-</div>
 
-<div class="register" style="display:none">
-  <div class="form-box">
-    <h2 style="text-align:center">Registro</h2>
-    <input type="text" id="reg-nombre" placeholder="Nombre">
-    <input type="text" id="reg-apellido" placeholder="Apellido">
-    <input type="email" id="reg-email" placeholder="Email">
-    <input type="password" id="reg-contraseña" placeholder="Contraseña">
-    <input type="password" id="reg-contraseña2" placeholder="Repetir Contraseña">
-    <button onclick="registrar()">Registrarse</button>
-    <p>¿Ya tienes cuenta? <a href="#" onclick="mostrarLogin()">Inicia sesión</a></p>
+  <div class="container" id="register-container" style="display: none;">
+    <div class="form-box">
+      <h2>Registro</h2>
+      <div id="register-error" class="error"></div>
+      <input type="text" id="reg-nombre" placeholder="Nombre" required>
+      <input type="text" id="reg-apellido" placeholder="Apellido" required>
+      <input type="email" id="reg-email" placeholder="Email" required>
+      <input type="password" id="reg-contraseña" placeholder="Contraseña" required>
+      <input type="password" id="reg-contraseña2" placeholder="Repetir Contraseña" required>
+      <button onclick="registrar()">Registrarse</button>
+      <p>¿Ya tienes cuenta? <a href="#" onclick="mostrarLogin()">Inicia sesión</a></p>
+    </div>
   </div>
-</div>
 
-
-  <div class="dashboard">
+  <div class="dashboard" id="dashboard">
     <div class="welcome">
       <img src="https://via.placeholder.com/60" alt="avatar">
       <h2>Hola! <span id="username"></span></h2>
@@ -45,17 +44,30 @@
       <div class="box">
         <h3>SOCIOS</h3>
         <input type="text" placeholder="Buscar socio">
-        <table><tr><th>Número</th><th>Nombre</th><th>DNI</th><th>Domicilio</th></tr><tr><td>X</td><td>X</td><td>X</td><td>X</td></tr></table>
+        <table id="socios-table">
+          <tr><th>Número</th><th>Nombre</th><th>DNI</th><th>Domicilio</th></tr>
+          <!-- Datos dummy -->
+          <tr><td>1</td><td>Juan Pérez</td><td>12345678</td><td>Calle 1</td></tr>
+          <tr><td>2</td><td>María López</td><td>87654321</td><td>Calle 2</td></tr>
+        </table>
         <button>Nuevo Socio</button>
       </div>
       <div class="box">
         <h3>LIBRO DE SOCIOS</h3>
-        <table><tr><th>Número</th><th>Nombre</th><th>DNI</th><th>Ingreso</th><th>Egreso</th></tr><tr><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr></table>
+        <table id="libro-table">
+          <tr><th>Número</th><th>Nombre</th><th>DNI</th><th>Ingreso</th><th>Egreso</th></tr>
+          <tr><td>1</td><td>Juan Pérez</td><td>12345678</td><td>2020-01-01</td><td>-</td></tr>
+          <tr><td>2</td><td>María López</td><td>87654321</td><td>2021-05-10</td><td>-</td></tr>
+        </table>
       </div>
       <div class="box">
         <h3>PADRÓN DE SOCIOS</h3>
         <button>Imprimir</button>
-        <table><tr><th>Nombre</th><th>DNI</th><th>Número</th></tr><tr><td>X</td><td>X</td><td>X</td></tr></table>
+        <table id="padron-table">
+          <tr><th>Nombre</th><th>DNI</th><th>Número</th></tr>
+          <tr><td>Juan Pérez</td><td>12345678</td><td>1</td></tr>
+          <tr><td>María López</td><td>87654321</td><td>2</td></tr>
+        </table>
       </div>
       <div class="box">
         <h3>CONTROL</h3>
@@ -67,17 +79,96 @@
       <div class="box">
         <h3>CONTROL DE TALONARIOS</h3>
         <input type="text" placeholder="Buscar talonario">
-        <table><tr><th>#</th><th>Fecha</th><th>Socio</th><th>Desde</th></tr><tr><td>X</td><td>X</td><td>X</td><td>X</td></tr></table>
+        <table id="talonarios-table">
+          <tr><th>#</th><th>Fecha</th><th>Socio</th><th>Desde</th></tr>
+          <tr><td>001</td><td>2023-10-01</td><td>Juan Pérez</td><td>1</td></tr>
+          <tr><td>002</td><td>2023-10-05</td><td>María López</td><td>1</td></tr>
+        </table>
       </div>
       <div class="box">
         <h3>PAGOS</h3>
         <select><option>Filtro 1</option></select>
         <select><option>Filtro 2</option></select>
         <button>Aplicar</button>
-        <table><tr><th>Socio</th><th>Descripción</th><th>Fecha</th><th>Monto</th></tr><tr><td>X</td><td>X</td><td>X</td><td>X</td></tr></table>
+        <table id="pagos-table">
+          <tr><th>Socio</th><th>Descripción</th><th>Fecha</th><th>Monto</th></tr>
+          <tr><td>Juan Pérez</td><td>Cuota mensual</td><td>2023-10-01</td><td>$100</td></tr>
+          <tr><td>María López</td><td>Cuota mensual</td><td>2023-10-05</td><td>$100</td></tr>
+        </table>
       </div>
     </div>
   </div>
+
+  <script>
+    // Función para mostrar registro
+    function mostrarRegistro() {
+      document.getElementById('login-container').style.display = 'none';
+      document.getElementById('register-container').style.display = 'flex';
+      document.getElementById('login-error').textContent = '';
+    }
+
+    // Función para mostrar login
+    function mostrarLogin() {
+      document.getElementById('register-container').style.display = 'none';
+      document.getElementById('login-container').style.display = 'flex';
+      document.getElementById('register-error').textContent = '';
+    }
+
+    // Función de registro (simulado con localStorage)
+    function registrar() {
+      const nombre = document.getElementById('reg-nombre').value.trim();
+      const apellido = document.getElementById('reg-apellido').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const pass = document.getElementById('reg-contraseña').value;
+      const pass2 = document.getElementById('reg-contraseña2').value;
+      const errorDiv = document.getElementById('register-error');
+
+      if (!nombre || !apellido || !email || !pass) {
+        errorDiv.textContent = 'Todos los campos son obligatorios.';
+        return;
+      }
+      if (pass !== pass2) {
+        errorDiv.textContent = 'Las contraseñas no coinciden.';
+        return;
+      }
+
+      // Simular registro (guardar en localStorage)
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      if (users.find(u => u.email === email)) {
+        errorDiv.textContent = 'El email ya está registrado.';
+        return;
+      }
+      users.push({ nombre, apellido, email, password: pass }); // Nota: No encriptar en demo
+      localStorage.setItem('users', JSON.stringify(users));
+
+      alert('Registro exitoso. Ahora inicia sesión.');
+      mostrarLogin();
+    }
+
+    // Función de login (simulado)
+    function login() {
+      const email = document.getElementById('email').value.trim();
+      const pass = document.getElementById('contraseña').value;
+      const errorDiv = document.getElementById('login-error');
+
+      if (!email || !pass) {
+        errorDiv.textContent = 'Email y contraseña son obligatorios.';
+        return;
+      }
+
+      // Simular verificación (cualquier email/pass funciona por ahora, o verifica localStorage)
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const user = users.find(u => u.email === email && u.password === pass);
+
+      if (user || (email === 'admin@example.com' && pass === '123')) { // Demo fallback
+        document.getElementById('username').textContent = user ? `${user.nombre} ${user.apellido}` : 'Admin';
+        document.getElementById('login-container').style.display = 'none';
+        document.getElementById('register-container').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+      } else {
+        errorDiv.textContent = 'Credenciales incorrectas.';
+      }
+    }
+  </script>
 </body>
-<script src="IniciarSesion.js"></script>
 </html>
