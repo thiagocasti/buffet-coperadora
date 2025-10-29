@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -34,6 +34,20 @@
     </div>
   </div>
 
+  <!-- Modal para Nuevo Socio -->
+  <div id="modal-nuevo-socio" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModal()">&times;</span>
+      <h2>Agregar Nuevo Socio</h2>
+      <div id="socio-error" class="error"></div>
+      <input type="text" id="socio-numero" placeholder="Número" required>
+      <input type="text" id="socio-nombre" placeholder="Nombre" required>
+      <input type="text" id="socio-dni" placeholder="DNI" required>
+      <input type="text" id="socio-domicilio" placeholder="Domicilio" required>
+      <button onclick="agregarSocio()">Guardar Socio</button>
+    </div>
+  </div>
+
   <div class="dashboard" id="dashboard">
     <div class="welcome">
       <img src="https://via.placeholder.com/60" alt="avatar">
@@ -46,35 +60,28 @@
         <input type="text" placeholder="Buscar socio">
         <table id="socios-table">
           <tr><th>Número</th><th>Nombre</th><th>DNI</th><th>Domicilio</th></tr>
-          <!-- Datos dummy -->
-          <tr><td>1</td><td>Juan Pérez</td><td>12345678</td><td>Calle 1</td></tr>
-          <tr><td>2</td><td>María López</td><td>87654321</td><td>Calle 2</td></tr>
         </table>
-        <button>Nuevo Socio</button>
+        <button onclick="mostrarModalNuevoSocio()">Nuevo Socio</button>
       </div>
       <div class="box">
         <h3>LIBRO DE SOCIOS</h3>
         <table id="libro-table">
           <tr><th>Número</th><th>Nombre</th><th>DNI</th><th>Ingreso</th><th>Egreso</th></tr>
-          <tr><td>1</td><td>Juan Pérez</td><td>12345678</td><td>2020-01-01</td><td>-</td></tr>
-          <tr><td>2</td><td>María López</td><td>87654321</td><td>2021-05-10</td><td>-</td></tr>
         </table>
       </div>
       <div class="box">
         <h3>PADRÓN DE SOCIOS</h3>
-        <button>Imprimir</button>
+        <button onclick="imprimirPadron()">Imprimir</button>
         <table id="padron-table">
           <tr><th>Nombre</th><th>DNI</th><th>Número</th></tr>
-          <tr><td>Juan Pérez</td><td>12345678</td><td>1</td></tr>
-          <tr><td>María López</td><td>87654321</td><td>2</td></tr>
         </table>
       </div>
       <div class="box">
         <h3>CONTROL</h3>
-        <button>Resumen</button>
-        <button>Talonarios a retirar</button>
-        <button>Duplicados</button>
-        <button>Anotaciones</button>
+        <button onclick="mostrarResumen()">Resumen</button>
+        <button onclick="alert('Talonarios a retirar: Simulación')">Talonarios a retirar</button>
+        <button onclick="alert('Duplicados: Simulación')">Duplicados</button>
+        <button onclick="alert('Anotaciones: Simulación')">Anotaciones</button>
       </div>
       <div class="box">
         <h3>CONTROL DE TALONARIOS</h3>
@@ -89,7 +96,7 @@
         <h3>PAGOS</h3>
         <select><option>Filtro 1</option></select>
         <select><option>Filtro 2</option></select>
-        <button>Aplicar</button>
+        <button onclick="aplicarFiltros()">Aplicar</button>
         <table id="pagos-table">
           <tr><th>Socio</th><th>Descripción</th><th>Fecha</th><th>Monto</th></tr>
           <tr><td>Juan Pérez</td><td>Cuota mensual</td><td>2023-10-01</td><td>$100</td></tr>
@@ -99,76 +106,6 @@
     </div>
   </div>
 
-  <script>
-    // Función para mostrar registro
-    function mostrarRegistro() {
-      document.getElementById('login-container').style.display = 'none';
-      document.getElementById('register-container').style.display = 'flex';
-      document.getElementById('login-error').textContent = '';
-    }
-
-    // Función para mostrar login
-    function mostrarLogin() {
-      document.getElementById('register-container').style.display = 'none';
-      document.getElementById('login-container').style.display = 'flex';
-      document.getElementById('register-error').textContent = '';
-    }
-
-    // Función de registro (simulado con localStorage)
-    function registrar() {
-      const nombre = document.getElementById('reg-nombre').value.trim();
-      const apellido = document.getElementById('reg-apellido').value.trim();
-      const email = document.getElementById('reg-email').value.trim();
-      const pass = document.getElementById('reg-contraseña').value;
-      const pass2 = document.getElementById('reg-contraseña2').value;
-      const errorDiv = document.getElementById('register-error');
-
-      if (!nombre || !apellido || !email || !pass) {
-        errorDiv.textContent = 'Todos los campos son obligatorios.';
-        return;
-      }
-      if (pass !== pass2) {
-        errorDiv.textContent = 'Las contraseñas no coinciden.';
-        return;
-      }
-
-      // Simular registro (guardar en localStorage)
-      const users = JSON.parse(localStorage.getItem('users')) || [];
-      if (users.find(u => u.email === email)) {
-        errorDiv.textContent = 'El email ya está registrado.';
-        return;
-      }
-      users.push({ nombre, apellido, email, password: pass }); // Nota: No encriptar en demo
-      localStorage.setItem('users', JSON.stringify(users));
-
-      alert('Registro exitoso. Ahora inicia sesión.');
-      mostrarLogin();
-    }
-
-    // Función de login (simulado)
-    function login() {
-      const email = document.getElementById('email').value.trim();
-      const pass = document.getElementById('contraseña').value;
-      const errorDiv = document.getElementById('login-error');
-
-      if (!email || !pass) {
-        errorDiv.textContent = 'Email y contraseña son obligatorios.';
-        return;
-      }
-
-      // Simular verificación (cualquier email/pass funciona por ahora, o verifica localStorage)
-      const users = JSON.parse(localStorage.getItem('users')) || [];
-      const user = users.find(u => u.email === email && u.password === pass);
-
-      if (user || (email === 'admin@example.com' && pass === '123')) { // Demo fallback
-        document.getElementById('username').textContent = user ? `${user.nombre} ${user.apellido}` : 'Admin';
-        document.getElementById('login-container').style.display = 'none';
-        document.getElementById('register-container').style.display = 'none';
-        document.getElementById('dashboard').style.display = 'block';
-      } else {
-        errorDiv.textContent = 'Credenciales incorrectas.';
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
