@@ -8,7 +8,7 @@ body {
 }
 
 header {
-  background-color: #007bff;
+  background-color: #000000; /* Negro para el header */
   color: white;
   text-align: center;
   padding: 20px;
@@ -50,7 +50,7 @@ header {
 .form-box button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #dc3545; /* Rojo para botones */
   color: white;
   border: none;
   border-radius: 4px;
@@ -59,7 +59,7 @@ header {
 }
 
 .form-box button:hover {
-  background-color: #0056b3;
+  background-color: #b02a37; /* Rojo más oscuro para hover */
 }
 
 .form-box p {
@@ -68,7 +68,7 @@ header {
 }
 
 .form-box a {
-  color: #007bff;
+  color: #dc3545; /* Rojo para enlaces */
   text-decoration: none;
 }
 
@@ -121,7 +121,7 @@ header {
 
 .box h3 {
   margin-top: 0;
-  color: #007bff;
+  color: #dc3545; /* Rojo para títulos de cajas */
 }
 
 .box input, .box select, .box button {
@@ -132,14 +132,14 @@ header {
 }
 
 .box button {
-  background-color: #28a745;
+  background-color: #dc3545; /* Rojo para botones en cajas */
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .box button:hover {
-  background-color: #218838;
+  background-color: #b02a37; /* Rojo más oscuro para hover */
 }
 
 /* Tablas */
@@ -203,4 +203,3 @@ th {
     padding: 20px;
   }
 }
-
