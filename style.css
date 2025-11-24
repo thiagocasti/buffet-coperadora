@@ -203,3 +203,7 @@ th {
     padding: 20px;
   }
 }
+
+#admin-sections { background-color: #f0f0f0; } /* Fondo gris para secciones admin */
+.modal-content input[type="number"] { width: 100%; padding: 8px; margin: 10px 0; }
+
