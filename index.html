@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -104,42 +104,48 @@
   </div>        
 
   <div class="dashboard" id="dashboard">
-    <div style="display: block;">
+    <div>
       <div class="welcome">
         <img src="./Socio.png" alt="avatar">
         <h2>Hola! <span id="username"></span></h2>
       </div>
 
-      <div class="grid-container">
-          <div class="box" id="admin-sections" style="display: none;">
-            <h3>MENÚS</h3>
-            <table id="menus-table">
-              <tr><th>Fecha</th><th>Plato Principal</th><th>Guarnición</th><th>Postre</th><th>Precio</th><th>Disponible</th></tr>
-            </table>
-            <button onclick="mostrarModalNuevoMenu()">Nuevo Menú</button>
-          </div>
-          <div class="box">
-            <h3>RESERVAS</h3>
-            <table id="reservas-table">
+      <!-- Nuevo menú de navegación -->
+      <nav id="nav-menu">
+        <!-- Los botones se agregarán dinámicamente con JS para condicionalidad -->
+      </nav>
+
+      <!-- Contenedor de secciones (reemplaza grid-container) -->
+      <div id="sections-container">
+        <div class="box" id="menus-section" style="display: none;">
+          <h3>MENÚS</h3>
+          <table id="menus-table">
+            <tr><th>Fecha</th><th>Plato Principal</th><th>Guarnición</th><th>Postre</th><th>Precio</th><th>Disponible</th></tr>
+          </table>
+          <button onclick="mostrarModalNuevoMenu()">Nuevo Menú</button>
+        </div>
+        <div class="box" id="reservas-section" style="display: none;">
+          <h3>RESERVAS</h3>
+          <table id="reservas-table">
             <tr><th>Socio</th><th>Menú Fecha</th><th>Estado</th><th>Pagado</th></tr>
-            </table>
-            <button onclick="mostrarModalNuevaReserva()">Nueva Reserva</button>
-          </div>
-          <div class="box">
-            <h3>ASISTENCIAS</h3>
-            <table id="asistencias-table">
-              <tr><th>Socio</th><th>Menú Fecha</th><th>Fecha Asistencia</th></tr>
-            </table>
-            <button onclick="mostrarModalNuevaAsistencia()">Nueva Asistencia</button>
-          </div>
-          <div class="box">
-            <h3>PAGOS</h3>
-            <table id="pagos-table">
-              <tr><th>Socio</th><th>Menú Fecha</th><th>Monto</th><th>Método</th><th>Fecha Pago</th></tr>
-            </table>
-            <button onclick="mostrarModalNuevoPago()">Nuevo Pago</button>
-          </div>
-                <div class="box">
+          </table>
+          <button onclick="mostrarModalNuevaReserva()">Nueva Reserva</button>
+        </div>
+        <div class="box" id="asistencias-section" style="display: none;">
+          <h3>ASISTENCIAS</h3>
+          <table id="asistencias-table">
+            <tr><th>Socio</th><th>Menú Fecha</th><th>Fecha Asistencia</th></tr>
+          </table>
+          <button onclick="mostrarModalNuevaAsistencia()">Nueva Asistencia</button>
+        </div>
+        <div class="box" id="pagos-section" style="display: none;">
+          <h3>PAGOS</h3>
+          <table id="pagos-table">
+            <tr><th>Socio</th><th>Menú Fecha</th><th>Monto</th><th>Método</th><th>Fecha Pago</th></tr>
+          </table>
+          <button onclick="mostrarModalNuevoPago()">Nuevo Pago</button>
+        </div>
+        <div class="box" id="socios-section" style="display: none;">
           <h3>SOCIOS</h3>
           <input type="text" placeholder="Buscar socio">
           <table id="socios-table">
@@ -147,44 +153,33 @@
           </table>
           <button onclick="mostrarModalNuevoSocio()">Nuevo Socio</button>
         </div>
-        <div class="box">
+        <div class="box" id="libro-section" style="display: none;">
           <h3>LIBRO DE SOCIOS</h3>
           <table id="libro-table">
             <tr><th>Número</th><th>Nombre</th><th>DNI</th><th>Ingreso</th><th>Egreso</th></tr>
           </table>
         </div>
-        <div class="box">
+        <div class="box" id="padron-section" style="display: none;">
           <h3>PADRÓN DE SOCIOS</h3>
           <button onclick="imprimirPadron()">Imprimir</button>
           <table id="padron-table">
             <tr><th>Nombre</th><th>DNI</th><th>Número</th></tr>
           </table>
         </div>
-        <div class="box">
+        <div class="box" id="control-section" style="display: none;">
           <h3>CONTROL</h3>
           <button onclick="mostrarResumen()">Resumen</button>
           <button onclick="alert('Talonarios a retirar: Simulación')">Talonarios a retirar</button>
           <button onclick="alert('Duplicados: Simulación')">Duplicados</button>
           <button onclick="alert('Anotaciones: Simulación')">Anotaciones</button>
         </div>
-        <div class="box">
+        <div class="box" id="talonarios-section" style="display: none;">
           <h3>CONTROL DE TALONARIOS</h3>
           <input type="text" placeholder="Buscar talonario">
           <table id="talonarios-table">
             <tr><th>#</th><th>Fecha</th><th>Socio</th><th>Desde</th></tr>
             <tr><td>001</td><td>2023-10-01</td><td>Juan Pérez</td><td>1</td></tr>
             <tr><td>002</td><td>2023-10-05</td><td>María López</td><td>1</td></tr>
-          </table>
-        </div>
-        <div class="box">
-          <h3>PAGOS</h3>
-          <select><option>Filtro 1</option></select>
-          <select><option>Filtro 2</option></select>
-          <button onclick="aplicarFiltros()">Aplicar</button>
-          <table id="pagos-table">
-            <tr><th>Socio</th><th>Descripción</th><th>Fecha</th><th>Monto</th></tr>
-            <tr><td>Juan Pérez</td><td>Cuota mensual</td><td>2023-10-01</td><td>$100</td></tr>
-            <tr><td>María López</td><td>Cuota mensual</td><td>2023-10-05</td><td>$100</td></tr>
           </table>
         </div>
       </div>
