@@ -133,7 +133,7 @@ export default function Dashboard() {
         {activeSection === 'reservas' && (
           <div className="box fade-in">
              <div className="box-header">
-              <h3>📅 MIS RESERVAS</h3>
+              <h3>📅RESERVAS</h3>
               <button className="action-btn" onClick={() => alert("Función: Crear reserva")}>+ Nueva Reserva</button>
             </div>
             <table>
