@@ -1,0 +1,272 @@
+/* Estilos generales */
+:root {
+  --primary-red: #dc3545;
+  --dark-red-bg: #290808; /* El color negro rojizo para la barra */
+  --light-gray: #f4f4f4;
+  --text-dark: #333;
+  --white: #ffffff;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-gray);
+  color: var(--text-dark);
+}
+
+/* ================= HEADER (Escudos y Título) ================= */
+header {
+  background-color: #000000; /* Negro puro para que los escudos resalten */
+  color: var(--white);
+  text-align: center;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between; /* Escudos a los extremos */
+  align-items: center;
+  border-bottom: 3px solid var(--primary-red);
+}
+
+header img {
+  height: 70px;
+  width: auto;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ================= NUEVA BARRA DE NAVEGACIÓN (Negro Rojizo) ================= */
+.main-navbar {
+  background-color: var(--dark-red-bg); /* Color negro rojizo */
+  display: flex;
+  justify-content: center; /* Botones centrados */
+  padding: 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  position: sticky; /* Que se quede pegada arriba al scrollear */
+  top: 0;
+  z-index: 100;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.8); /* Blanco semitransparente */
+  padding: 15px 25px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid transparent; /* Línea invisible abajo */
+}
+
+.nav-link:hover {
+  color: var(--white);
+  background-color: rgba(255,255,255,0.05);
+}
+
+.nav-link.active {
+  color: var(--white);
+  background-color: rgba(220, 53, 69, 0.2); /* Fondo rojo suave */
+  border-bottom: 3px solid var(--primary-red); /* Línea roja activa */
+}
+
+/* ================= DASHBOARD CONTENT ================= */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.dashboard-content {
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ================= BANNER DE BIENVENIDA MEJORADO ================= */
+.welcome-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--white);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  border-left: 6px solid var(--primary-red); /* Borde rojo a la izquierda */
+  background: linear-gradient(to right, #ffffff, #f9f9f9);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin-right: 20px;
+  border: 3px solid var(--primary-red); /* Borde rojo al avatar */
+  padding: 2px;
+}
+
+.welcome-banner h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.highlight-name {
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.user-role {
+  margin: 5px 0 0 0;
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.logout-btn {
+  background-color: transparent;
+  border: 2px solid var(--text-dark);
+  color: var(--text-dark);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: var(--text-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.welcome-placeholder {
+  text-align: center;
+  padding: 50px;
+  color: #888;
+  background: white;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
+}
+
+/* ================= CAJAS Y TABLAS ================= */
+.box {
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  border-top: 4px solid var(--primary-red);
+}
+
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 15px;
+}
+
+.box h3 {
+  margin: 0;
+  color: var(--primary-red);
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+/* Tablas Modernas */
+table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; }
+th { background-color: #fdfdfd; color: #555; font-weight: 700; padding: 15px; text-align: left; border-bottom: 2px solid #eee; }
+td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; color: #444; }
+tr:hover td { background-color: #f9f9f9; }
+
+/* Etiquetas de estado (ej. Reservado) */
+.tag { padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+.tag.reservado { background-color: #fff3cd; color: #856404; }
+.tag.confirmado { background-color: #d4edda; color: #155724; }
+
+/* Inputs de búsqueda */
+.search-input {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  outline: none;
+  width: 250px;
+}
+
+/* ================= BOTONES DE ACCIÓN ================= */
+.action-btn {
+  background-color: var(--primary-red);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(220, 53, 69, 0.2);
+}
+.action-btn:hover { background-color: #c82333; transform: translateY(-2px); }
+.action-btn.secondary { background-color: #6c757d; box-shadow: 0 4px 6px rgba(108, 117, 125, 0.2); }
+.action-btn.secondary:hover { background-color: #5a6268; }
+.full-width { width: 100%; margin-top: 15px; }
+
+
+/* ================= LOGIN / REGISTRO (Contenedores) ================= */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(135deg, var(--primary-red) 0%, #290808 100%); /* Fondo más lindo para login */
+  padding: 20px;
+}
+
+.form-box {
+  background-color: var(--white);
+  padding: 50px 40px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+.form-box h2 { color: var(--text-dark); margin-bottom: 30px; font-size: 28px; }
+.form-box input { width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #eee; border-radius: 8px; box-sizing: border-box; transition: border-color 0.3s; background: #fcfcfc;}
+.form-box input:focus { border-color: var(--primary-red); outline: none; background: #fff;}
+.form-box button { width: 100%; padding: 15px; background-color: var(--primary-red); color: var(--white); border: none; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; margin-top: 20px; transition: background 0.3s;}
+.form-box button:hover { background-color: #c82333; }
+.form-box p { margin-top: 25px; color: #777; }
+.form-box a { color: var(--primary-red); text-decoration: none; font-weight: bold; }
+.error { background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f5c6cb;}
+
+/* ================= MODALES ================= */
+.modal { position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; backdrop-filter: blur(3px); }
+.modal-content { background-color: #fff; padding: 40px; border-radius: 15px; width: 90%; max-width: 500px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); position: relative; }
+.modal h2 { text-align: center; color: var(--primary-red); margin-top: 0; }
+.close { position: absolute; right: 25px; top: 20px; font-size: 28px; font-weight: bold; cursor: pointer; color: #aaa; transition: color 0.3s; }
+.close:hover { color: var(--primary-red); }
+.modal-content input, .modal-content select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+
+/* Animaciones */
+.fade-in { animation: fadeIn 0.4s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
