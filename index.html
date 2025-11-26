@@ -110,14 +110,15 @@
         <h2>Hola! <span id="username"></span></h2>
       </div>
 
-      <!-- Nuevo menú de navegación -->
-      <nav id="nav-menu">
+      <!-- Grid de botones (cuadrículas) -->
+      <div id="buttons-grid">
         <!-- Los botones se agregarán dinámicamente con JS para condicionalidad -->
-      </nav>
+      </div>
 
-      <!-- Contenedor de secciones (reemplaza grid-container) -->
+      <!-- Contenedor de secciones -->
       <div id="sections-container">
         <div class="box" id="menus-section" style="display: none;">
+          <button class="back-btn" onclick="showButtonsGrid()">Volver</button>
           <h3>MENÚS</h3>
           <table id="menus-table">
             <tr><th>Fecha</th><th>Plato Principal</th><th>Guarnición</th><th>Postre</th><th>Precio</th><th>Disponible</th></tr>
@@ -125,6 +126,7 @@
           <button onclick="mostrarModalNuevoMenu()">Nuevo Menú</button>
         </div>
         <div class="box" id="reservas-section" style="display: none;">
+          <button class="back-btn" onclick="showButtonsGrid()">Volver</button>
           <h3>RESERVAS</h3>
           <table id="reservas-table">
             <tr><th>Socio</th><th>Menú Fecha</th><th>Estado</th><th>Pagado</th></tr>
@@ -132,6 +134,7 @@
           <button onclick="mostrarModalNuevaReserva()">Nueva Reserva</button>
         </div>
         <div class="box" id="asistencias-section" style="display: none;">
+          <button class="back-btn" onclick="showButtonsGrid()">Volver</button>
           <h3>ASISTENCIAS</h3>
           <table id="asistencias-table">
             <tr><th>Socio</th><th>Menú Fecha</th><th>Fecha Asistencia</th></tr>
@@ -139,6 +142,7 @@
           <button onclick="mostrarModalNuevaAsistencia()">Nueva Asistencia</button>
         </div>
         <div class="box" id="pagos-section" style="display: none;">
+          <button class="back-btn" onclick="showButtonsGrid()">Volver</button>
           <h3>PAGOS</h3>
           <table id="pagos-table">
             <tr><th>Socio</th><th>Menú Fecha</th><th>Monto</th><th>Método</th><th>Fecha Pago</th></tr>
@@ -146,6 +150,7 @@
           <button onclick="mostrarModalNuevoPago()">Nuevo Pago</button>
         </div>
         <div class="box" id="socios-section" style="display: none;">
+          <button class="back-btn" onclick="showButtonsGrid()">Volver</button>
           <h3>SOCIOS</h3>
           <input type="text" placeholder="Buscar socio">
           <table id="socios-table">
@@ -154,12 +159,14 @@
           <button onclick="mostrarModalNuevoSocio()">Nuevo Socio</button>
         </div>
         <div class="box" id="libro-section" style="display: none;">
+          <button class="back-btn" onclick="showButtonsGrid()">Volver</button>
           <h3>LIBRO DE SOCIOS</h3>
           <table id="libro-table">
             <tr><th>Número</th><th>Nombre</th><th>DNI</th><th>Ingreso</th><th>Egreso</th></tr>
           </table>
         </div>
         <div class="box" id="padron-section" style="display: none;">
+          <button class="back-btn" onclick="showButtonsGrid()">Volver</button>
           <h3>PADRÓN DE SOCIOS</h3>
           <button onclick="imprimirPadron()">Imprimir</button>
           <table id="padron-table">
@@ -167,6 +174,7 @@
           </table>
         </div>
         <div class="box" id="control-section" style="display: none;">
+          <button class="back-btn" onclick="showButtonsGrid()">Volver</button>
           <h3>CONTROL</h3>
           <button onclick="mostrarResumen()">Resumen</button>
           <button onclick="alert('Talonarios a retirar: Simulación')">Talonarios a retirar</button>
@@ -174,6 +182,7 @@
           <button onclick="alert('Anotaciones: Simulación')">Anotaciones</button>
         </div>
         <div class="box" id="talonarios-section" style="display: none;">
+          <button class="back-btn" onclick="showButtonsGrid()">Volver</button>
           <h3>CONTROL DE TALONARIOS</h3>
           <input type="text" placeholder="Buscar talonario">
           <table id="talonarios-table">
