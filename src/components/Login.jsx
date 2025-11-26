@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/storage';
 
 export default function Login() {
@@ -23,10 +23,23 @@ export default function Login() {
       <div className="form-box">
         <h2>Inicie Sesión</h2>
         <div className="error">{error}</div>
-        <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input type="password" placeholder="Contraseña" value={pass} onChange={e => setPass(e.target.value)} />
+        <input 
+            type="email" 
+            placeholder="Email" 
+            value={email} 
+            onChange={e => setEmail(e.target.value)} 
+        />
+        <input 
+            type="password" 
+            placeholder="Contraseña" 
+            value={pass} 
+            onChange={e => setPass(e.target.value)} 
+        />
         <button onClick={handleLogin}>Ingresar</button>
-        <p>¿No tienes cuenta? <Link to="/registro">Regístrate aquí</Link></p>
+        
+        {}
+        {}
+        
       </div>
     </div>
   );
