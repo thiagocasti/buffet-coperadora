@@ -7,7 +7,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>La 35 Becas</header>
+
+  <header>
+    <img src="./Escudo colegio.jpg" alt="Escudo">
+    <h1>La 35 Becas</h1>
+    <img src="./Escudo colegio.jpg" alt="Escudo">
+  </header>
   
   <div class="container" id="login-container">
     <div class="form-box">
@@ -48,66 +53,69 @@
     </div>
   </div>
 
-        <!-- Modal para Nuevo Menú -->
-<div id="modal-nuevo-menu" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span class="close" onclick="cerrarModalMenu()">&times;</span>
-    <h2>Agregar Nuevo Menú</h2>
-    <div id="menu-error" class="error"></div>
-    <input type="date" id="menu-fecha" required>
-    <input type="text" id="menu-principal" placeholder="Plato Principal" required>
-    <input type="text" id="menu-guarnicion" placeholder="Guarnición" required>
-    <input type="text" id="menu-postre" placeholder="Postre" required>
-    <input type="number" id="menu-precio" placeholder="Precio" step="0.01" required>
-    <button onclick="agregarMenu()">Guardar Menú</button>
+  <!-- Modal para Nuevo Menú -->
+  <div id="modal-nuevo-menu" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModalMenu()">&times;</span>
+      <h2>Agregar Nuevo Menú</h2>
+      <div id="menu-error" class="error"></div>
+      <input type="date" id="menu-fecha" required>
+      <input type="text" id="menu-principal" placeholder="Plato Principal" required>
+      <input type="text" id="menu-guarnicion" placeholder="Guarnición" required>
+      <input type="text" id="menu-postre" placeholder="Postre" required>
+      <input type="number" id="menu-precio" placeholder="Precio" step="0.01" required>
+      <button onclick="agregarMenu()">Guardar Menú</button>
+    </div>
   </div>
-</div>
 
-<!-- Modal para Nueva Reserva -->
-<div id="modal-nueva-reserva" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span class="close" onclick="cerrarModalReserva()">&times;</span>
-    <h2>Reservar Almuerzo</h2>
-    <div id="reserva-error" class="error"></div>
-    <select id="reserva-menu"></select>
-    <button onclick="agregarReserva()">Reservar</button>
+  <!-- Modal para Nueva Reserva -->
+  <div id="modal-nueva-reserva" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModalReserva()">&times;</span>
+      <h2>Reservar Almuerzo</h2>
+      <div id="reserva-error" class="error"></div>
+      <select id="reserva-menu"></select>
+      <button onclick="agregarReserva()">Reservar</button>
+    </div>
   </div>
-</div>
 
-<!-- Modal para Nueva Asistencia -->
-<div id="modal-nueva-asistencia" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span class="close" onclick="cerrarModalAsistencia()">&times;</span>
-    <h2>Registrar Asistencia</h2>
-    <div id="asistencia-error" class="error"></div>
-    <select id="asistencia-reserva"></select>
-    <button onclick="agregarAsistencia()">Registrar</button>
+  <!-- Modal para Nueva Asistencia -->
+  <div id="modal-nueva-asistencia" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModalAsistencia()">&times;</span>
+      <h2>Registrar Asistencia</h2>
+      <div id="asistencia-error" class="error"></div>
+      <select id="asistencia-reserva"></select>
+      <button onclick="agregarAsistencia()">Registrar</button>
+    </div>
   </div>
-</div>
 
-<!-- Modal para Nuevo Pago -->
-<div id="modal-nuevo-pago" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span class="close" onclick="cerrarModalPago()">&times;</span>
-    <h2>Registrar Pago</h2>
-    <div id="pago-error" class="error"></div>
-    <select id="pago-reserva"></select>
-    <input type="number" id="pago-monto" placeholder="Monto" step="0.01" required>
-    <select id="pago-metodo" required><option value="">Método</option><option value="efectivo">Efectivo</option><option value="tarjeta">Tarjeta</option></select>
-    <button onclick="agregarPago()">Registrar Pago</button>
-  </div>
-</div>
+  <!-- Modal para Nuevo Pago -->
+  <div id="modal-nuevo-pago" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModalPago()">&times;</span>
+      <h2>Registrar Pago</h2>
+      <div id="pago-error" class="error"></div>
+      <select id="pago-reserva"></select>
+      <input type="number" id="pago-monto" placeholder="Monto" step="0.01" required>
+      <select id="pago-metodo" required><option value="">Método</option><option value="efectivo">Efectivo</option><option value="tarjeta">Tarjeta</option></select>
+      <button onclick="agregarPago()">Registrar Pago</button>
+    </div>
+  </div>        
 
-        
+  <!-- <div style="background-color: red; height: 500px; justify-content: flex-start; width: 20px;">
+      hola
+  </div> -->
 
   <div class="dashboard" id="dashboard">
+
     <div class="welcome">
-      <img src="https://via.placeholder.com/60" alt="avatar">
+      <img src="./Socio.png" alt="avatar">
       <h2>Hola! <span id="username"></span></h2>
     </div>
 
     <div class="grid-container">
-            <div class="box" id="admin-sections" style="display: none;">
+        <div class="box" id="admin-sections" style="display: none;">
           <h3>MENÚS</h3>
           <table id="menus-table">
             <tr><th>Fecha</th><th>Plato Principal</th><th>Guarnición</th><th>Postre</th><th>Precio</th><th>Disponible</th></tr>

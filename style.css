@@ -7,12 +7,25 @@ body {
   color: #333;
 }
 
+/* Header */
 header {
   background-color: #000000; /* Negro para el header */
   color: white;
   text-align: center;
   padding: 20px;
-  font-size: 24px;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+header img {
+  border-radius: 10%;
+  height: fit-content;
+  width: fit-content;
+}
+header h1 {
+  align-self: center;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Contenedores de formularios */
@@ -20,7 +33,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 75vh;
   background-color: #f4f4f4;
 }
 
@@ -93,14 +106,14 @@ header {
 .welcome {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
 }
-
 .welcome img {
-  border-radius: 50%;
+  height: 80px;
+  border-radius: 100%;
   margin-right: 10px;
 }
-
 .welcome h2 {
   margin: 0;
 }
