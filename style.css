@@ -118,11 +118,48 @@ header h1 {
   margin: 0;
 }
 
-/* Grid de cajas */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+/* Nuevo: Estilos para el menú de navegación */
+#nav-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#nav-menu button {
+  padding: 10px 15px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#nav-menu button:hover {
+  background-color: #b02a37;
+}
+
+#nav-menu button.active {
+  background-color: #b02a37; /* Resaltar el botón activo */
+}
+
+/* Modificar: Contenedor de secciones (antes grid-container) */
+#sections-container {
+  /* Remover grid, usar block para secciones individuales */
+}
+
+#sections-container .box {
+  /* Asegurar que las ocultas no afecten el layout */
+  display: none;
+}
+
+#sections-container .box.active {
+  display: block;
 }
 
 .box {
@@ -219,4 +256,3 @@ th {
 
 #admin-sections { background-color: #f0f0f0; } /* Fondo gris para secciones admin */
 .modal-content input[type="number"] { width: 100%; padding: 8px; margin: 10px 0; }
-
