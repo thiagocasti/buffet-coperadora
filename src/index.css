@@ -22,7 +22,7 @@ header {
   text-align: center;
   padding: 15px 20px;
   display: flex;
-  justify-content: space-between; /* Escudos a los extremos */
+  justify-content: space-around; /* Escudos a una distancia pareja */
   align-items: center;
   border-bottom: 3px solid var(--primary-red);
 }
@@ -35,7 +35,7 @@ header img {
 
 header h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 35px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;

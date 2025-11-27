@@ -124,7 +124,7 @@ export default function Dashboard() {
         {/* HEADER DE BIENVENIDA */}
         <div className="welcome-banner">
           <div className="user-info">
-            <img src="/Socio.png" alt="avatar" className="user-avatar"/>
+            <img src="src\assets\Socio.png" alt="avatar" className="user-avatar"/>
             <div>
               <h2>Hola, <span className="highlight-name">{user.nombre} {user.apellido}</span></h2>
               <p className="user-role">{user.rol === 'admin' ? 'Administrador' : 'Administrador'}</p>
