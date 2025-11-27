@@ -17,6 +17,8 @@ export default function Dashboard() {
   // Modales
   const [showModalMenu, setShowModalMenu] = useState(false);
   const [showModalSocio, setShowModalSocio] = useState(false);
+  const [showModalReserva, setShowModalReserva] = useState(false); // NUEVO
+  
   const [formData, setFormData] = useState({});
 
   useEffect(() => {
@@ -43,7 +45,9 @@ export default function Dashboard() {
   };
 
   const handleInputChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    // Si es checkbox, usamos checked, si no value
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    setFormData({...formData, [e.target.name]: value});
   }
 
   // --- GUARDAR DATOS ---
@@ -65,13 +69,42 @@ export default function Dashboard() {
     } else { alert("Faltan datos"); }
   };
 
+  // NUEVO: Guardar Reserva (Crear o Editar)
+  const guardarReserva = () => {
+    if(formData.socio_numero && formData.menu_fecha) {
+        Storage.addReserva(formData);
+        recargarDatos();
+        setShowModalReserva(false);
+        setFormData({});
+    } else { alert("Faltan datos: Socio y Fecha son obligatorios"); }
+  };
+
+  // NUEVO: Preparar edición
+  const editarReserva = (reserva) => {
+    setFormData(reserva); // Cargamos los datos de la fila en el formulario
+    setShowModalReserva(true); // Abrimos el modal
+  };
+
+  // NUEVO: Eliminar
+  const borrarReserva = (id) => {
+    if(window.confirm("¿Estás seguro de eliminar esta reserva?")) {
+        Storage.deleteReserva(id);
+        recargarDatos();
+    }
+  };
+
+  // Función para abrir modal vacío
+  const abrirNuevaReserva = () => {
+      setFormData({}); // Limpiamos formulario
+      setShowModalReserva(true);
+  }
+
   if (!user) return null;
 
   return (
     <div className="dashboard-container">
       
-      {/* === NUEVA BARRA DE NAVEGACIÓN "NEGRO ROJIZO" === */}
-      {/* Esta barra ahora está siempre visible debajo del Header */}
+      {/* BARRA DE NAVEGACIÓN */}
       <nav className="main-navbar">
         <button className={`nav-link ${activeSection === null ? 'active' : ''}`} onClick={() => setActiveSection(null)}>🏠 Inicio</button>
         <button className={`nav-link ${activeSection === 'menus' ? 'active' : ''}`} onClick={() => setActiveSection('menus')}>Menús</button>
@@ -88,19 +121,19 @@ export default function Dashboard() {
       </nav>
 
       <div className="dashboard-content">
-        {/* HEADER DE BIENVENIDA MEJORADO */}
+        {/* HEADER DE BIENVENIDA */}
         <div className="welcome-banner">
           <div className="user-info">
-            <img src="src\assets\Socio.png" alt="avatar" className="user-avatar"/>
+            <img src="/Socio.png" alt="avatar" className="user-avatar"/>
             <div>
               <h2>Hola, <span className="highlight-name">{user.nombre} {user.apellido}</span></h2>
-              <p className="user-role">{user.rol === 'admin' ? 'Administrador' : 'Alumno/Socio'}</p>
+              <p className="user-role">{user.rol === 'admin' ? 'Administrador' : 'Administrador'}</p>
             </div>
           </div>
           <button onClick={cerrarSesion} className="logout-btn">Cerrar Sesión</button>
         </div>
 
-        {/* === SECCIONES INDIVIDUALES === */}
+        {/* SECCIONES */}
         
         {activeSection === null && (
           <div className="welcome-placeholder">
@@ -129,18 +162,28 @@ export default function Dashboard() {
           </div>
         )}
 
-        {/* 2. SECCIÓN RESERVAS */}
+        {/* 2. SECCIÓN RESERVAS (MODIFICADA) */}
         {activeSection === 'reservas' && (
           <div className="box fade-in">
              <div className="box-header">
-              <h3>📅RESERVAS</h3>
-              <button className="action-btn" onClick={() => alert("Función: Crear reserva")}>+ Nueva Reserva</button>
+              <h3>📅 MIS RESERVAS</h3>
+              <button className="action-btn" onClick={abrirNuevaReserva}>+ Nueva Reserva</button>
             </div>
             <table>
-              <thead><tr><th>Socio</th><th>Fecha Menú</th><th>Estado</th><th>Pagado</th></tr></thead>
+              <thead><tr><th>Socio</th><th>Fecha Menú</th><th>Estado</th><th>Pagado</th><th>Acciones</th></tr></thead>
               <tbody>
                 {reservas.map((r, i) => (
-                  <tr key={i}><td>{r.socio_numero}</td><td>{r.menu_fecha}</td><td><span className={`tag ${r.estado}`}>{r.estado}</span></td><td>{r.pagado ? 'Sí' : 'No'}</td></tr>
+                  <tr key={i}>
+                    <td>{r.socio_numero}</td>
+                    <td>{r.menu_fecha}</td>
+                    <td><span className={`tag ${r.estado}`}>{r.estado}</span></td>
+                    <td>{r.pagado ? 'Sí' : 'No'}</td>
+                    <td>
+                        {/* BOTONES DE ACCIÓN (EDITAR Y ELIMINAR) */}
+                        <button className="action-btn secondary" style={{padding: '5px 10px', fontSize: '12px', marginRight: '5px'}} onClick={() => editarReserva(r)}>✏️</button>
+                        <button className="action-btn" style={{padding: '5px 10px', fontSize: '12px', background: '#dc3545'}} onClick={() => borrarReserva(r.id)}>🗑️</button>
+                    </td>
+                  </tr>
                 ))}
               </tbody>
             </table>
@@ -198,7 +241,7 @@ export default function Dashboard() {
           </div>
         )}
 
-        {/* SECCIÓN CONTROL Y OTRAS */}
+        {/* SECCIÓN CONTROL */}
         {(activeSection === 'control' || activeSection === 'padron') && (
            <div className="box fade-in">
               <h3>{activeSection.toUpperCase()} (Simulación)</h3>
@@ -212,6 +255,8 @@ export default function Dashboard() {
       </div>
 
       {/* === MODALES === */}
+      
+      {/* Modal Menú */}
       {showModalMenu && (
         <div className="modal fade-in">
           <div className="modal-content">
@@ -227,6 +272,7 @@ export default function Dashboard() {
         </div>
       )}
 
+      {/* Modal Socio */}
       {showModalSocio && (
         <div className="modal fade-in">
           <div className="modal-content">
@@ -237,6 +283,36 @@ export default function Dashboard() {
             <input type="text" name="dni" placeholder="DNI" onChange={handleInputChange} />
             <input type="text" name="domicilio" placeholder="Domicilio" onChange={handleInputChange} />
             <button className="action-btn full-width" onClick={guardarSocio}>Guardar Socio</button>
+          </div>
+        </div>
+      )}
+
+      {/* NUEVO: Modal Reserva */}
+      {showModalReserva && (
+        <div className="modal fade-in">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowModalReserva(false)}>&times;</span>
+            <h2>{formData.id ? 'Editar Reserva' : 'Nueva Reserva'}</h2>
+            
+            <label style={{display:'block', marginTop:'10px', fontWeight:'bold'}}>Número de Socio:</label>
+            <input type="text" name="socio_numero" value={formData.socio_numero || ''} placeholder="Ej: 001" onChange={handleInputChange} />
+            
+            <label style={{display:'block', marginTop:'10px', fontWeight:'bold'}}>Fecha del Menú:</label>
+            <input type="date" name="menu_fecha" value={formData.menu_fecha || ''} onChange={handleInputChange} />
+            
+            <label style={{display:'block', marginTop:'10px', fontWeight:'bold'}}>Estado:</label>
+            <select name="estado" value={formData.estado || 'reservado'} onChange={handleInputChange} style={{width: '100%', padding: '10px', border: '1px solid #ddd', borderRadius: '4px'}}>
+                <option value="reservado">Reservado</option>
+                <option value="confirmado">Confirmado</option>
+                <option value="cancelado">Cancelado</option>
+            </select>
+
+            <div style={{marginTop: '15px'}}>
+                <input type="checkbox" name="pagado" checked={formData.pagado || false} onChange={handleInputChange} />
+                <label style={{marginLeft: '5px'}}>¿Ya está pagado?</label>
+            </div>
+
+            <button className="action-btn full-width" onClick={guardarReserva}>Guardar Reserva</button>
           </div>
         </div>
       )}
