@@ -49,7 +49,6 @@ export const getSocios = () => {
     { id: 1009, numero: '1009', nombre: 'Elena Torres', dni: '28.852.741', domicilio: 'Paz 777', ingreso: '2023-06-20' },
     { id: 1010, numero: '1010', nombre: 'Diego Ruiz', dni: '29.963.852', domicilio: 'Libertad 100', ingreso: '2023-07-01' }
   ];
-  //hasta aca xd
 
   return [...sociosReales, ...sociosTest];
 };

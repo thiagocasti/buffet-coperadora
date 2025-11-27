@@ -307,9 +307,9 @@ export default function Dashboard() {
                 <option value="cancelado">Cancelado</option>
             </select>
 
-            <div style={{marginTop: '15px'}}>
-                <input type="checkbox" name="pagado" checked={formData.pagado || false} onChange={handleInputChange} />
-                <label style={{marginLeft: '5px'}}>¿Ya está pagado?</label>
+            <div style={{marginTop: '10px', marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <label style={{marginRight: '10px'}}>¿Ya está pagado?</label>
+                <input type="checkbox" name="pagado" checked={formData.pagado || false} onChange={handleInputChange}  style={{width: 'auto'}}/>
             </div>
 
             <button className="action-btn full-width" onClick={guardarReserva}>Guardar Reserva</button>
